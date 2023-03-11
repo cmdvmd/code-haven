@@ -33,7 +33,7 @@ code {
     text-align: left;
 }
 
-.characteristic {
+.characteristic-wrapper {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -42,9 +42,9 @@ code {
 
 .characteristic-name {
     font-size: 17px;
+    font-weight: bold;
     text-align: left;
     margin-right: 10px;
-    border-bottom: 2px solid white;
 }
 
 .characteristic-option {
@@ -72,8 +72,10 @@ code {
     justify-content: space-between;
 }
 
-.cipher-wrapper {
-
+.characteristic-checkbox {
+    background-color: #0a7ce6;
+    width: 15px;
+    height: 15px;
 }
 
 .error {

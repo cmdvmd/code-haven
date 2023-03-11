@@ -1,6 +1,6 @@
 import {useState, useEffect} from "react";
 
-function Cipher({cipher, alphabet}) {
+function Cipher({cipher, alphabet, autocheck}) {
     const [ciphertext, setCiphertext] = useState(null);
     const [plaintext, setPlaintext] = useState(null);
     const [error, setError] = useState(false);

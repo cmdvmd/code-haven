@@ -1,14 +1,14 @@
 import {useEffect} from "react";
 
-function TestType({handleChange, current, name, options}) {
+function TestType({handleChange, name, current, options}) {
     useEffect(() => {
         if (current == null) {
             handleChange(options[0]);
         }
     });
     return (
-        <div className="characteristic">
-            <p className="characteristic-name"><b>{name}:</b></p>
+        <div className="characteristic-wrapper">
+            <p className="characteristic-name">{name}:</p>
             <div className="characteristic-option-wrapper">
                 {options.map((option) => (
                     <button key={option} className={"characteristic-option" + ((option === current) ? " active" : "")}
