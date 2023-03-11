@@ -1,6 +1,6 @@
 const Header = () => (
-    <nav id="header">
-        <h1 id="title">Code Cracker</h1>
+    <nav className="header">
+        <h1 className="title">Code Cracker</h1>
     </nav>
 );
 

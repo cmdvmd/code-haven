@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700');
+
 body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -12,17 +14,21 @@ code {
     monospace;
 }
 
-#content {
-    padding-left: 25px;
+.title, .characteristic-name, .characteristic-option {
+    font-family: Quicksand, sans-serif, Arial;
 }
 
-#header {
+.content {
+    padding: 10px 25px;
+}
+
+.header {
     overflow: auto;
     background: #0a7ce6;
     padding-left: 25px;
 }
 
-#title {
+.title {
     color: white;
     text-align: left;
 }
@@ -61,8 +67,15 @@ code {
 }
 
 .characteristic-option-wrapper {
-    float: left;
     display: inline-flex;
     column-gap: 5px;
     justify-content: space-between;
+}
+
+.cipher-wrapper {
+
+}
+
+.error {
+    text-align: left;
 }

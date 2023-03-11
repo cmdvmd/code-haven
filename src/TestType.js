@@ -1,7 +1,11 @@
+import {useEffect} from "react";
+
 function TestType({handleChange, current, name, options}) {
-    if (current == null) {
-        handleChange(options[0]);
-    }
+    useEffect(() => {
+        if (current == null) {
+            handleChange(options[0]);
+        }
+    });
     return (
         <div className="characteristic">
             <p className="characteristic-name"><b>{name}:</b></p>
