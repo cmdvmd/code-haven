@@ -15,7 +15,7 @@ code {
 }
 
 .title, .characteristic-name, .characteristic-option {
-    font-family: Quicksand, sans-serif, Arial;
+    font-family: Quicksand, sans-serif;
 }
 
 .content {
@@ -25,7 +25,7 @@ code {
 .header {
     overflow: auto;
     background: #0a7ce6;
-    padding-left: 25px;
+    padding: 0 25px;
 }
 
 .title {
@@ -33,9 +33,13 @@ code {
     text-align: left;
 }
 
-.characteristic-wrapper {
+.test-options-wrapper {
     display: flex;
-    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.characteristic-wrapper {
+    display: inline-flex;
     align-items: center;
     height: 50px;
 }
@@ -48,9 +52,9 @@ code {
 }
 
 .characteristic-option {
-    border: none;
     font-size: 15px;
     background-color: white;
+    border: none;
     border-bottom: 2px solid #bbbbbb;
     padding: 1px 4px;
     margin-right: 5px;
@@ -62,14 +66,8 @@ code {
 
 .characteristic-option:hover {
     cursor: pointer;
-    background-color: #ecececec;
+    background-color: #ececec;
     opacity: 0.75;
-}
-
-.characteristic-option-wrapper {
-    display: inline-flex;
-    column-gap: 5px;
-    justify-content: space-between;
 }
 
 .characteristic-checkbox {
