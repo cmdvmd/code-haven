@@ -1,8 +1,10 @@
 import {useEffect, useState} from "react";
 
-function Letter({ciphertext, plaintext, similar, active, autocheck}) {
+function Letter({handleFocus, location, ciphertext, plaintext, similar, active, autocheck}) {
     const blank = '\u00A0';
     const [inputtedLetter, setInputtedLetter] = useState(blank);
+
+    useEffect(() => setInputtedLetter(blank), [ciphertext, plaintext]);
 
     useEffect(() => {
         const handleKeypress = (event) => {
@@ -18,10 +20,10 @@ function Letter({ciphertext, plaintext, similar, active, autocheck}) {
     }, [similar]);
 
     return (
-        <div
-            className={"letter-wrapper" + ((autocheck && inputtedLetter !== blank && inputtedLetter !== plaintext) ? " incorrect" : "")}>
+        <div className={"letter-wrapper" + ((autocheck && inputtedLetter !== blank && inputtedLetter !== plaintext) ? " incorrect" : "")} onClick={() => /^[A-Z]$/.test(plaintext) && handleFocus(location)}>
             <p className="ciphertext-letter">{ciphertext}</p>
-            <p className={"plaintext-letter" + ((similar) ? " similar" : "") + ((active) ? " active" : "")}>{inputtedLetter}</p>
+            {/^[A-Z]$/.test(plaintext) && <p className={"plaintext-letter" + ((similar) ? " similar" : "") + ((active) ? " active" : "")}>{inputtedLetter}</p>}
+            {/^[0-9]$/.test(plaintext) && <p className="plaintext-letter numerical">{plaintext}</p>}
         </div>
     )
 }
