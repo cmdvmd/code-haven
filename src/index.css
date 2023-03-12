@@ -44,11 +44,14 @@ code {
     height: 50px;
 }
 
+.characteristic-name, .characteristic-option {
+    margin-right: 5px;
+}
+
 .characteristic-name {
     font-size: 17px;
     font-weight: bold;
     text-align: left;
-    margin-right: 10px;
 }
 
 .characteristic-option {
@@ -57,7 +60,6 @@ code {
     border: none;
     border-bottom: 2px solid #bbbbbb;
     padding: 1px 4px;
-    margin-right: 5px;
 }
 
 .characteristic-option.active, .characteristic-option:hover {
@@ -78,4 +80,36 @@ code {
 
 .error {
     text-align: left;
+}
+
+.letter-wrapper {
+    width: fit-content;
+}
+
+.letter-wrapper.incorrect {
+    color: red;
+}
+
+.ciphertext-letter, .plaintext-letter {
+    font-size: 17px;
+    margin: 0;
+    padding: 10px 7px;
+}
+
+.ciphertext-letter {
+    font-family: "Courier New", serif;
+    font-weight: bold;
+}
+
+.plaintext-letter {
+    font-family: monospace;
+    border: 1px solid;
+}
+
+.plaintext-letter.similar {
+    background-color: #e6e655a0;
+}
+
+.plaintext-letter.active {
+    background-color: #e6e655;
 }

@@ -1,3 +1,4 @@
+import Letter from "./Letter";
 import {useState, useEffect} from "react";
 
 function Cipher({cipher, alphabet, autocheck}) {
