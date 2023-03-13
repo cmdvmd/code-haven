@@ -1,8 +1,9 @@
 import './App.css';
 import Header from './Header';
 import TestOption from "./TestOption";
-import Cipher from "./Cipher"
+import Problem from "./Problem"
 import Toggle from "./Toggle";
+import FrequencyTable from "./FrequencyTable";
 import {useState} from "react";
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
                                 options={["Random", "K1", "K2", "K3"]}/>
                     <Toggle handleChange={setAutocheck} name="Autocheck" current={autocheck}/>
                 </div>
-                <Cipher cipher={cipherType} alphabet={alphabet} autocheck={autocheck}/>
+                <Problem cipher={cipherType} alphabet={alphabet} autocheck={autocheck}/>
             </div>
         </div>
     );

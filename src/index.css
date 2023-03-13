@@ -93,13 +93,14 @@ code {
     padding: 10px 7px;
 }
 
-.ciphertext-letter, .ciphertext-letter.numerical {
+.ciphertext-letter, .plaintext-letter.non-alphabetic {
     font-family: "Courier New", serif;
     font-weight: bold;
     cursor: default;
+    background-color: #ecececf0;
 }
 
-.plaintext-letter:not(.numerical) {
+.plaintext-letter:not(.non-alphabetic) {
     font-family: monospace;
     border: 1px solid;
 }
@@ -122,4 +123,37 @@ code {
 .word-wrapper {
     display: flex;
     margin: 0 10px;
+}
+
+.frequency-table-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.frequency-table-letter-wrapper {
+    border: 1px solid;
+    width: fit-content;
+    margin-top: 30px;
+}
+
+.frequency-table-letter-wrapper.active {
+    background-color: #e6dc0a60;
+}
+
+.frequency-table-letter-wrapper.incorrect {
+    color: red;
+}
+
+.frequency-table-letter {
+    font-family: "Courier New", serif;
+    border: 1px solid;
+    margin: 0;
+    padding: 2px;
+}
+
+.frequency-table-letter.alphabet {
+    font-weight: bold;
+    background-color: #ecececf0;
+    padding: 0 10px
 }
