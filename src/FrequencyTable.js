@@ -8,17 +8,17 @@ function FrequencyTable({ciphertext, plaintext, alphabet, selected, autocheck}) 
         return frequency;
     }
 
-    const findPair = (ciphertextLetter) => {
-        let index = ciphertext.indexOf(ciphertextLetter);
-        return (index === -1) ? "\u00A0" : plaintext.charAt(index);
+    const findPair = (char, k2) => {
+        let index = (k2 ? plaintext : ciphertext).indexOf(char);
+        return (index === -1) ? "\u00A0" : (k2 ? ciphertext : plaintext).charAt(index);
     }
 
     return (
         <div className="frequency-table-wrapper">
             {[...english_alphabet].map((char, index) => (
-                <TableLetter key={index} alphabetLetter={char} ciphertextLetter={findPair(char)}
-                             frequency={calculateFrequency(char)} k2={alphabet === "K2"} active={char === selected}
-                             autocheck={autocheck}/>
+                <TableLetter key={index} alphabetLetter={char} ciphertextLetter={findPair(char, alphabet === "K2")}
+                             frequency={calculateFrequency(char)} k2={alphabet === "K2"} selectedLetter={selected}
+                             active={char === selected} autocheck={autocheck}/>
             ))}
         </div>
     )

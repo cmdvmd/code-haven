@@ -83,6 +83,10 @@ code {
     text-align: left;
 }
 
+.letter-wrapper {
+    margin: 0 1px;
+}
+
 .letter-wrapper.incorrect {
     color: red;
 }
