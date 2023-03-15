@@ -1,31 +1,38 @@
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 
-function CipherLetter({handleFocus, location, ciphertext, plaintext, similar, active, autocheck}) {
+function CipherLetter({
+                          handleFocus,
+                          handleText,
+                          location,
+                          ciphertext,
+                          plaintext,
+                          displayText,
+                          similar,
+                          active,
+                          autocheck
+                      }) {
     const blank = "\u00A0";
-    const [inputtedLetter, setInputtedLetter] = useState(blank);
-
-    useEffect(() => setInputtedLetter(blank), [ciphertext, plaintext]);
 
     useEffect(() => {
         const handleKeypress = (event) => {
             if (similar && /^[A-Za-z]$/.test(event.key)) {
-                setInputtedLetter(event.key.toUpperCase())
+                handleText(event.key.toUpperCase(), location)
             } else if (similar && event.key === "Backspace") {
-                setInputtedLetter(blank);
+                handleText(blank, location)
             }
         }
 
         document.addEventListener('keyup', handleKeypress, true);
         return () => document.removeEventListener('keyup', handleKeypress, true);
-    }, [similar]);
+    }, [similar, handleText, location]);
 
     return (
         <div
-            className={"letter-wrapper" + ((autocheck && inputtedLetter !== blank && inputtedLetter !== plaintext) ? " incorrect" : "")}
+            className={"letter-wrapper" + ((autocheck && displayText !== blank && displayText !== plaintext) ? " incorrect" : "")}
             onClick={() => /^[A-Z]$/.test(plaintext) && handleFocus(location)}>
             <p className="ciphertext-letter">{ciphertext}</p>
             {/^[A-Z]$/.test(plaintext) &&
-                <p className={"plaintext-letter" + ((similar) ? " similar" : "") + ((active) ? " active" : "")}>{inputtedLetter}</p>}
+                <p className={"plaintext-letter" + ((similar) ? " similar" : "") + ((active) ? " active" : "")}>{displayText}</p>}
             {!/^[A-Z]$/.test(plaintext) && <p className="plaintext-letter non-alphabetic">{plaintext}</p>}
         </div>
     )
