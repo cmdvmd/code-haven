@@ -10,10 +10,33 @@ function Problem({cipher, alphabet, autocheck}) {
     const [inputtedText, setInputtedText] = useState(null);
     const blank = "\u00A0";
 
+    const complete = (correct, inputtedAnswer = inputtedText) => {
+        for (let wordIndex = 0; wordIndex < inputtedAnswer.length; wordIndex++) {
+            for (let letterIndex = 0; letterIndex < inputtedAnswer[wordIndex].length; letterIndex++) {
+                if (/[A-Z]/.test(ciphertextWords[wordIndex][letterIndex]) && ((correct && inputtedAnswer[wordIndex][letterIndex] !== ciphertextWords[wordIndex][letterIndex]) || (!correct && inputtedAnswer[wordIndex][letterIndex] === blank))) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
     const handleInput = (char, location) => {
-        setInputtedText((previousAnswer) => previousAnswer.map((word, wordIndex) => word.map((letter, letterIndex) => {
-            return (ciphertextWords[wordIndex][letterIndex] === ciphertextWords[location[0]][location[1]]) ? char : previousAnswer[wordIndex][letterIndex];
-        })));
+        let newAnswer = inputtedText.map((word, wordIndex) => word.map((letter, letterIndex) => (ciphertextWords[wordIndex][letterIndex] === ciphertextWords[location[0]][location[1]]) ? char : inputtedText[wordIndex][letterIndex]));
+        let [wordIndex, letterIndex] = [...selected];
+        if (char !== blank && !complete(false, newAnswer)) {
+            do {
+                if (letterIndex === ciphertextWords[wordIndex].length - 1) {
+                    wordIndex = (wordIndex + 1) % ciphertextWords.length;
+                    letterIndex = 0;
+                }
+                else {
+                    letterIndex++;
+                }
+            } while(newAnswer[wordIndex][letterIndex] !== blank || !/[A-Z]/.test(ciphertextWords[wordIndex][letterIndex]));
+        }
+        setInputtedText(newAnswer);
+        setSelected([wordIndex, letterIndex]);
     }
 
     useEffect(() => {

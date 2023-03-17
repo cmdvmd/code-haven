@@ -24,8 +24,8 @@ function TableLetter({alphabetLetter, ciphertextLetter, frequency, k2, selectedL
             }
         }
 
-        document.addEventListener('keyup', handleKeypress, true);
-        return () => document.removeEventListener('keyup', handleKeypress, true);
+        window.addEventListener('keyup', handleKeypress, true);
+        return () => window.removeEventListener('keyup', handleKeypress, true);
     }, [active, selectedLetter, alphabetLetter, inputtedLetter, k2]);
 
     return (
