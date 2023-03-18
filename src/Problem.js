@@ -5,6 +5,7 @@ import FrequencyTable from "./FrequencyTable";
 function Problem({cipher, alphabet, autocheck, inputtedText, handleInput, selected, handleSelection}) {
     const [ciphertextWords, setCiphertext] = useState(null);
     const [plaintextWords, setPlaintext] = useState(null);
+    const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
     const blank = "\u00A0";
 
@@ -37,6 +38,7 @@ function Problem({cipher, alphabet, autocheck, inputtedText, handleInput, select
     }
 
     useEffect(() => {
+        setLoading(true);
         fetch(`https://codebustersapi.pythonanywhere.com/${cipher.toLowerCase()}?alphabet=${alphabet}`)
             .then((response) => response.json())
             .then((problem) => {
@@ -45,6 +47,7 @@ function Problem({cipher, alphabet, autocheck, inputtedText, handleInput, select
                 setPlaintext(problem.plaintext.split(" "));
                 handleInput(words.map((word) => Array(word.length).fill(blank)));
                 handleSelection([0, 0]);
+                setLoading(false);
                 setError(false);
             })
             .catch(() => {
@@ -84,8 +87,9 @@ function Problem({cipher, alphabet, autocheck, inputtedText, handleInput, select
     return (
         <div className="problem-wrapper">
             <div className="cipher-wrapper">
-                {error && <p className="error">The requested data could not be retrieved at this time.</p>}
-                {ciphertextWords && ciphertextWords.map((word, wordIndex) => (
+                {loading && <p className="message">Loading...</p>}
+                {error && <p className="message">The requested data could not be retrieved at this time.</p>}
+                {!loading && ciphertextWords.map((word, wordIndex) => (
                     <div key={wordIndex} className="word-wrapper">
                         {[...word].map((char, charIndex) => (
                             <CipherLetter key={[wordIndex, charIndex]} handleFocus={handleSelection}
