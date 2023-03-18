@@ -36,13 +36,15 @@ code {
 .test-options-wrapper {
     display: flex;
     justify-content: space-around;
+    align-content: center;
+    height: 25px;
+    padding: 15px 0;
     margin-bottom: 15px;
 }
 
 .characteristic-wrapper {
     display: inline-flex;
     align-items: center;
-    height: 50px;
 }
 
 .characteristic-name, .characteristic-option {
@@ -65,10 +67,10 @@ code {
 
 .characteristic-option.active, .characteristic-option:hover {
     border-color: #0a7ce6;
+    cursor: pointer;
 }
 
 .characteristic-option:hover {
-    cursor: pointer;
     background-color: #ececec;
     opacity: 0.75;
 }
@@ -77,6 +79,19 @@ code {
     background-color: #0a7ce6;
     width: 15px;
     height: 15px;
+}
+
+.reset-button {
+    background-color: #0a7ce6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 25px;
+    cursor: pointer;
+}
+
+.reset-button:hover {
+    background-color: #0550eb;
 }
 
 .error {
@@ -132,7 +147,7 @@ code {
 .frequency-table-wrapper {
     display: flex;
     justify-content: center;
-    margin-top: 25px;
+    margin-top: 10px;
 }
 
 .frequency-table-letter-wrapper {

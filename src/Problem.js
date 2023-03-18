@@ -2,12 +2,10 @@ import CipherLetter from "./CipherLetter";
 import {useState, useEffect} from "react";
 import FrequencyTable from "./FrequencyTable";
 
-function Problem({cipher, alphabet, autocheck}) {
+function Problem({cipher, alphabet, autocheck, inputtedText, handleInput, selected, handleSelection}) {
     const [ciphertextWords, setCiphertext] = useState(null);
     const [plaintextWords, setPlaintext] = useState(null);
     const [error, setError] = useState(false);
-    const [selected, setSelected] = useState(null);
-    const [inputtedText, setInputtedText] = useState(null);
     const blank = "\u00A0";
 
     const complete = (correct, inputtedAnswer = inputtedText) => {
@@ -21,7 +19,7 @@ function Problem({cipher, alphabet, autocheck}) {
         return true;
     }
 
-    const handleInput = (char, location) => {
+    const handleLetter = (char, location) => {
         let newAnswer = inputtedText.map((word, wordIndex) => word.map((letter, letterIndex) => (ciphertextWords[wordIndex][letterIndex] === ciphertextWords[location[0]][location[1]]) ? char : inputtedText[wordIndex][letterIndex]));
         let [wordIndex, letterIndex] = [...selected];
         if (char !== blank && !complete(false, newAnswer)) {
@@ -34,8 +32,8 @@ function Problem({cipher, alphabet, autocheck}) {
                 }
             } while (newAnswer[wordIndex][letterIndex] !== blank || !/[A-Z]/.test(ciphertextWords[wordIndex][letterIndex]));
         }
-        setInputtedText(newAnswer);
-        setSelected([wordIndex, letterIndex]);
+        handleInput(newAnswer);
+        handleSelection([wordIndex, letterIndex]);
     }
 
     useEffect(() => {
@@ -45,14 +43,14 @@ function Problem({cipher, alphabet, autocheck}) {
                 let words = problem.ciphertext.split(" ");
                 setCiphertext(words);
                 setPlaintext(problem.plaintext.split(" "));
-                setInputtedText(words.map((word) => Array(word.length).fill(blank)));
-                setSelected([0, 0]);
+                handleInput(words.map((word) => Array(word.length).fill(blank)));
+                handleSelection([0, 0]);
                 setError(false);
             })
             .catch(() => {
                 setError(true);
             })
-    }, [cipher, alphabet]);
+    }, [cipher, alphabet, handleInput, handleSelection]);
 
     useEffect(() => {
         const handleKeypress = (event) => {
@@ -75,13 +73,13 @@ function Problem({cipher, alphabet, autocheck}) {
                         }
                     }
                 } while (!/[A-Z]/.test(ciphertextWords[wordIndex][letterIndex]));
-                setSelected([wordIndex, letterIndex]);
+                handleSelection([wordIndex, letterIndex]);
             }
         }
 
         document.addEventListener('keyup', handleKeypress, true);
         return () => document.removeEventListener('keyup', handleKeypress, true);
-    }, [selected, inputtedText, ciphertextWords])
+    }, [selected, inputtedText, ciphertextWords, handleSelection])
 
     return (
         <div className="problem-wrapper">
@@ -90,8 +88,8 @@ function Problem({cipher, alphabet, autocheck}) {
                 {ciphertextWords && ciphertextWords.map((word, wordIndex) => (
                     <div key={wordIndex} className="word-wrapper">
                         {[...word].map((char, charIndex) => (
-                            <CipherLetter key={[wordIndex, charIndex]} handleFocus={setSelected}
-                                          handleText={handleInput}
+                            <CipherLetter key={[wordIndex, charIndex]} handleFocus={handleSelection}
+                                          handleText={handleLetter}
                                           location={[wordIndex, charIndex]}
                                           ciphertext={char} plaintext={plaintextWords[wordIndex][charIndex]}
                                           displayText={inputtedText[wordIndex][charIndex]}
@@ -103,7 +101,8 @@ function Problem({cipher, alphabet, autocheck}) {
                 ))}
             </div>
             {ciphertextWords && <FrequencyTable ciphertext={ciphertextWords.join()} plaintext={plaintextWords.join()}
-                                                alphabet={alphabet} selected={ciphertextWords[selected[0]][selected[1]]}
+                                                inputtedText={inputtedText} alphabet={alphabet}
+                                                selected={ciphertextWords[selected[0]][selected[1]]}
                                                 autocheck={autocheck}/>}
         </div>
     )
