@@ -29,11 +29,10 @@ function Problem({cipher, alphabet, autocheck}) {
                 if (letterIndex === ciphertextWords[wordIndex].length - 1) {
                     wordIndex = (wordIndex + 1) % ciphertextWords.length;
                     letterIndex = 0;
-                }
-                else {
+                } else {
                     letterIndex++;
                 }
-            } while(newAnswer[wordIndex][letterIndex] !== blank || !/[A-Z]/.test(ciphertextWords[wordIndex][letterIndex]));
+            } while (newAnswer[wordIndex][letterIndex] !== blank || !/[A-Z]/.test(ciphertextWords[wordIndex][letterIndex]));
         }
         setInputtedText(newAnswer);
         setSelected([wordIndex, letterIndex]);
@@ -54,6 +53,35 @@ function Problem({cipher, alphabet, autocheck}) {
                 setError(true);
             })
     }, [cipher, alphabet]);
+
+    useEffect(() => {
+        const handleKeypress = (event) => {
+            if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
+                let [wordIndex, letterIndex] = [...selected];
+                do {
+                    if (event.key === "ArrowRight") {
+                        if (letterIndex === inputtedText[wordIndex].length - 1) {
+                            wordIndex = (wordIndex + 1) % inputtedText.length;
+                            letterIndex = 0;
+                        } else {
+                            letterIndex++;
+                        }
+                    } else if (event.key === "ArrowLeft") {
+                        if (letterIndex === 0) {
+                            wordIndex = (((wordIndex - 1) % inputtedText.length) + inputtedText.length) % inputtedText.length
+                            letterIndex = inputtedText[wordIndex].length - 1;
+                        } else {
+                            letterIndex--;
+                        }
+                    }
+                } while (!/[A-Z]/.test(ciphertextWords[wordIndex][letterIndex]));
+                setSelected([wordIndex, letterIndex]);
+            }
+        }
+
+        document.addEventListener('keyup', handleKeypress, true);
+        return () => document.removeEventListener('keyup', handleKeypress, true);
+    }, [selected, inputtedText, ciphertextWords])
 
     return (
         <div className="problem-wrapper">
