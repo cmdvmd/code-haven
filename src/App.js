@@ -3,12 +3,12 @@ import Header from './Header';
 import TestOption from "./TestOption";
 import Problem from "./Problem"
 import Toggle from "./Toggle";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 
 function App() {
-    const [cipherType, setCipherType] = useState("Aristocrat");
-    const [alphabet, setAlphabet] = useState("Random");
-    const [autocheck, setAutocheck] = useState(false);
+    const [cipher, setCipher] = useState(localStorage.getItem("cipher") || "Aristocrat");
+    const [alphabet, setAlphabet] = useState(localStorage.getItem("alphabet") || "Random");
+    const [autocheck, setAutocheck] = useState(JSON.parse(localStorage.getItem("autocheck")) || false);
     const [selected, setSelected] = useState(null);
     const [inputtedText, setInputtedText] = useState(null);
 
@@ -19,19 +19,29 @@ function App() {
         }
     }
 
+    useEffect(() => {
+        localStorage.setItem("cipher", cipher)
+    }, [cipher]);
+    useEffect(() => {
+        localStorage.setItem("alphabet", alphabet)
+    }, [alphabet]);
+    useEffect(() => {
+        localStorage.setItem("autocheck", String(autocheck))
+    }, [autocheck]);
+
     return (
         <div className="App">
             <Header/>
             <div className="content">
                 <div className="test-options-wrapper">
-                    <TestOption handleChange={setCipherType} current={cipherType} name="Cipher"
+                    <TestOption handleChange={setCipher} current={cipher} name="Cipher"
                                 options={["Aristocrat", "Patristocrat"]}/>
                     <TestOption handleChange={setAlphabet} name="Alphabet" current={alphabet}
                                 options={["Random", "K1", "K2", "K3"]}/>
                     <Toggle handleChange={setAutocheck} name="Autocheck" current={autocheck}/>
                     <button className="reset-button" onClick={resetInputtedText}>Reset</button>
                 </div>
-                <Problem cipher={cipherType} alphabet={alphabet} autocheck={autocheck} inputtedText={inputtedText}
+                <Problem cipher={cipher} alphabet={alphabet} autocheck={autocheck} inputtedText={inputtedText}
                          handleInput={setInputtedText} selected={selected} handleSelection={setSelected}/>
             </div>
         </div>

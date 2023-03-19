@@ -43,6 +43,7 @@ function Problem({cipher, alphabet, autocheck, inputtedText, handleInput, select
     }
 
     useEffect(() => {
+        setError(false);
         setLoading(true);
         fetch(`https://codebustersapi.pythonanywhere.com/${cipher.toLowerCase()}?alphabet=${alphabet}`)
             .then((response) => response.json())
@@ -53,9 +54,9 @@ function Problem({cipher, alphabet, autocheck, inputtedText, handleInput, select
                 handleInput(words.map((word) => Array(word.length).fill(blank)));
                 handleSelection([0, 0]);
                 setLoading(false);
-                setError(false);
             })
             .catch(() => {
+                setLoading(false);
                 setError(true);
             })
     }, [cipher, alphabet, handleInput, handleSelection]);
@@ -101,7 +102,7 @@ function Problem({cipher, alphabet, autocheck, inputtedText, handleInput, select
             <div className="cipher-wrapper">
                 {loading && <p className="message">Loading...</p>}
                 {error && <p className="message">The requested data could not be retrieved at this time.</p>}
-                {!loading && ciphertextWords.map((word, wordIndex) => (
+                {!loading && !error && ciphertextWords.map((word, wordIndex) => (
                     <div key={wordIndex} className="word-wrapper">
                         {[...word].map((char, charIndex) => (
                             <CipherLetter key={[wordIndex, charIndex]} handleFocus={handleSelection}
@@ -116,10 +117,10 @@ function Problem({cipher, alphabet, autocheck, inputtedText, handleInput, select
                     </div>
                 ))}
             </div>
-            {!loading && <FrequencyTable ciphertext={ciphertextWords.join()} plaintext={plaintextWords.join()}
-                                         inputtedText={inputtedText} alphabet={alphabet}
-                                         selected={ciphertextWords[selected[0]][selected[1]]}
-                                         autocheck={autocheck}/>}
+            {!loading && !error && <FrequencyTable ciphertext={ciphertextWords.join()} plaintext={plaintextWords.join()}
+                                                   inputtedText={inputtedText} alphabet={alphabet}
+                                                   selected={ciphertextWords[selected[0]][selected[1]]}
+                                                   autocheck={autocheck}/>}
         </div>
     )
 }
