@@ -23,9 +23,16 @@ code {
 }
 
 .header {
+    display: flex;
     overflow: auto;
+    height: 75px;
     background: #0a7ce6;
     padding: 0 25px;
+}
+
+.logo {
+    padding: 10px;
+    margin-right: 10px;
 }
 
 .title {

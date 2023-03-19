@@ -75,7 +75,7 @@ function Problem({cipher, alphabet, autocheck, inputtedText, handleInput, select
                         }
                     } else if (event.key === "ArrowLeft") {
                         if (letterIndex === 0) {
-                            wordIndex = (((wordIndex - 1) % inputtedText.length) + inputtedText.length) % inputtedText.length
+                            wordIndex = (((wordIndex - 1) % inputtedText.length) + inputtedText.length) % inputtedText.length;
                             letterIndex = inputtedText[wordIndex].length - 1;
                         } else {
                             letterIndex--;
@@ -95,7 +95,7 @@ function Problem({cipher, alphabet, autocheck, inputtedText, handleInput, select
 
         document.addEventListener('keyup', handleKeypress, true);
         return () => document.removeEventListener('keyup', handleKeypress, true);
-    }, [selected, inputtedText, ciphertextWords, handleSelection, complete])
+    }, [selected, inputtedText, ciphertextWords, handleSelection, complete, plaintextWords]);
 
     return (
         <div className="problem-wrapper">
@@ -122,7 +122,7 @@ function Problem({cipher, alphabet, autocheck, inputtedText, handleInput, select
                                                    selected={ciphertextWords[selected[0]][selected[1]]}
                                                    autocheck={autocheck}/>}
         </div>
-    )
+    );
 }
 
 export default Problem;

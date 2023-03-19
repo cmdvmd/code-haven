@@ -41,7 +41,7 @@ function FrequencyTable({ciphertext, plaintext, inputtedText, alphabet, selected
                              selectedLetter={selected} active={char === selected} autocheck={autocheck}/>
             ))}
         </div>
-    )
+    );
 }
 
 export default FrequencyTable;

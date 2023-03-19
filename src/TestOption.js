@@ -13,7 +13,7 @@ function TestOption({handleChange, name, current, options}) {
                 <button key={option} className={"characteristic-option" + ((option === current) ? " active" : "")}
                         onClick={() => handleChange(option)}>{option}</button>))}
         </div>
-    )
+    );
 }
 
 export default TestOption;

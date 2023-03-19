@@ -7,7 +7,7 @@ function TableLetter({alphabetLetter, ciphertextLetter, inputtedLetter, frequenc
             <p className={"frequency-table-letter" + (k2 ? " alphabet" : "")}>{k2 ? alphabetLetter : (frequency === 0 ? blank : frequency)}</p>
             <p className="frequency-table-letter">{k2 ? (frequency === 0 ? blank : frequency) : inputtedLetter}</p>
         </div>
-    )
+    );
 }
 
 export default TableLetter;
