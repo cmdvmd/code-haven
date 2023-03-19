@@ -88,7 +88,7 @@ function Problem({cipher, alphabet, autocheck, inputtedText, handleInput, select
                 let time = Math.round((Date.now() - startTime.current) / 1000);
                 let minutes = Math.floor(time / 60);
                 let seconds = time % 60;
-                alert(`Correct!\nYour Time: ${minutes}:${seconds}\n\nClose this prompt to practice a new problem`);
+                alert(`Correct!\n\n${plaintextWords.join(" ")}\n\nYour Time: ${minutes}:${seconds}\n\nClose this prompt to practice a new problem`);
                 document.location.reload();
             }
         }
