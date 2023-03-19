@@ -3,6 +3,7 @@ import Header from './Header';
 import TestOption from "./TestOption";
 import Problem from "./Problem"
 import Toggle from "./Toggle";
+import Footer from "./Footer";
 import {useState, useEffect} from "react";
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
                 <Problem cipher={cipher} alphabet={alphabet} autocheck={autocheck} inputtedText={inputtedText}
                          handleInput={setInputtedText} selected={selected} handleSelection={setSelected}/>
             </div>
+            <Footer/>
         </div>
     );
 }

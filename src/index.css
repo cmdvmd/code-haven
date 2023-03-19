@@ -14,6 +14,10 @@ code {
     monospace;
 }
 
+.App {
+    min-height: 100vh;
+}
+
 .title, .characteristic-name, .characteristic-option {
     font-family: Quicksand, sans-serif;
 }
@@ -38,6 +42,30 @@ code {
 .title {
     color: white;
     text-align: left;
+}
+
+.footer {
+    background-color: #c3a775;
+    height: fit-content;
+    padding: 15px;
+    margin-top: 25px;
+    position: sticky;
+    top: 100%;
+}
+
+.credits {
+    color: #e6e6e6;
+    font-size: 12px;
+    text-align: left;
+}
+
+.credits a {
+    color: #e6e6e6;
+    text-decoration: none;
+}
+
+.credits a:hover {
+    text-decoration: underline;
 }
 
 .test-options-wrapper {
