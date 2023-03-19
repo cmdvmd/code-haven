@@ -1,5 +1,5 @@
 import CipherLetter from "./CipherLetter";
-import {useState, useEffect} from "react";
+import {useState, useEffect, useRef, useCallback} from "react";
 import FrequencyTable from "./FrequencyTable";
 
 function Problem({cipher, alphabet, autocheck, inputtedText, handleInput, selected, handleSelection}) {
@@ -7,18 +7,23 @@ function Problem({cipher, alphabet, autocheck, inputtedText, handleInput, select
     const [plaintextWords, setPlaintext] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
+    const startTime = useRef(null);
     const blank = "\u00A0";
 
-    const complete = (correct, inputtedAnswer = inputtedText) => {
+    useEffect(() => {
+        startTime.current = Date.now();
+    }, [cipher, alphabet]);
+
+    const complete = useCallback((correct, inputtedAnswer = inputtedText) => {
         for (let wordIndex = 0; wordIndex < inputtedAnswer.length; wordIndex++) {
             for (let letterIndex = 0; letterIndex < inputtedAnswer[wordIndex].length; letterIndex++) {
-                if (/[A-Z]/.test(ciphertextWords[wordIndex][letterIndex]) && ((correct && inputtedAnswer[wordIndex][letterIndex] !== ciphertextWords[wordIndex][letterIndex]) || (!correct && inputtedAnswer[wordIndex][letterIndex] === blank))) {
+                if (/[A-Z]/.test(ciphertextWords[wordIndex][letterIndex]) && ((correct && inputtedAnswer[wordIndex][letterIndex] !== plaintextWords[wordIndex][letterIndex]) || (!correct && inputtedAnswer[wordIndex][letterIndex] === blank))) {
                     return false;
                 }
             }
         }
         return true;
-    }
+    }, [ciphertextWords, inputtedText, plaintextWords]);
 
     const handleLetter = (char, location) => {
         let newAnswer = inputtedText.map((word, wordIndex) => word.map((letter, letterIndex) => (ciphertextWords[wordIndex][letterIndex] === ciphertextWords[location[0]][location[1]]) ? char : inputtedText[wordIndex][letterIndex]));
@@ -77,12 +82,19 @@ function Problem({cipher, alphabet, autocheck, inputtedText, handleInput, select
                     }
                 } while (!/[A-Z]/.test(ciphertextWords[wordIndex][letterIndex]));
                 handleSelection([wordIndex, letterIndex]);
+            } else if (event.key === "Enter" && complete(true)) {
+                console.log(Date.now() - startTime.current);
+                let time = Math.round((Date.now() - startTime.current) / 1000);
+                let minutes = Math.floor(time / 60);
+                let seconds = time % 60;
+                alert(`Correct!\nYour Time: ${minutes}:${seconds}\n\nClose this prompt to practice a new problem`);
+                document.location.reload();
             }
         }
 
         document.addEventListener('keyup', handleKeypress, true);
         return () => document.removeEventListener('keyup', handleKeypress, true);
-    }, [selected, inputtedText, ciphertextWords, handleSelection])
+    }, [selected, inputtedText, ciphertextWords, handleSelection, complete])
 
     return (
         <div className="problem-wrapper">
@@ -104,10 +116,10 @@ function Problem({cipher, alphabet, autocheck, inputtedText, handleInput, select
                     </div>
                 ))}
             </div>
-            {ciphertextWords && <FrequencyTable ciphertext={ciphertextWords.join()} plaintext={plaintextWords.join()}
-                                                inputtedText={inputtedText} alphabet={alphabet}
-                                                selected={ciphertextWords[selected[0]][selected[1]]}
-                                                autocheck={autocheck}/>}
+            {!loading && <FrequencyTable ciphertext={ciphertextWords.join()} plaintext={plaintextWords.join()}
+                                         inputtedText={inputtedText} alphabet={alphabet}
+                                         selected={ciphertextWords[selected[0]][selected[1]]}
+                                         autocheck={autocheck}/>}
         </div>
     )
 }
