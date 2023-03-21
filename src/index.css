@@ -35,6 +35,10 @@ code {
 }
 
 .logo {
+    max-width: 50px;
+    max-height: 50px;
+    width: auto;
+    height: auto;
     padding: 10px;
     margin-right: 10px;
 }
@@ -45,7 +49,8 @@ code {
 }
 
 .footer {
-    background-color: #c3a775;
+    color: #afafaf;
+    background-color: #0000000a;
     height: fit-content;
     padding: 15px;
     margin-top: 25px;
@@ -54,13 +59,12 @@ code {
 }
 
 .credits {
-    color: #e6e6e6;
-    font-size: 12px;
+    font-size: 10px;
     text-align: left;
 }
 
 .credits a {
-    color: #e6e6e6;
+    color: #afafaf;
     text-decoration: none;
 }
 
