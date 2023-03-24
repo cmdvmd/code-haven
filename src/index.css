@@ -49,26 +49,33 @@ code {
 }
 
 .footer {
+    display: flex;
     color: #afafaf;
     background-color: #0000000a;
     height: fit-content;
-    padding: 15px;
+    padding: 15px 20px;
     margin-top: 25px;
     position: sticky;
     top: 100%;
 }
 
-.credits {
+.footer-text {
     font-size: 10px;
     text-align: left;
 }
 
-.credits a {
+.footer-actions {
+    display: inline-flex;
+    gap: 10px;
+    margin-left: auto;
+}
+
+.footer a {
     color: #afafaf;
     text-decoration: none;
 }
 
-.credits a:hover {
+.footer a:hover {
     text-decoration: underline;
 }
 
@@ -98,7 +105,7 @@ code {
 
 .characteristic-option {
     font-size: 15px;
-    background-color: white;
+    background-color: transparent;
     border: none;
     border-bottom: 2px solid #bbbbbb;
     padding: 1px 4px;
@@ -137,8 +144,9 @@ code {
     text-align: left;
 }
 
-.letter-wrapper {
-    margin: 0 1px;
+.cipher-letter-wrapper {
+    display: inline-flex;
+    align-content: center;
 }
 
 .letter-wrapper.incorrect {
@@ -181,6 +189,16 @@ code {
 .word-wrapper {
     display: flex;
     margin: 0 10px;
+}
+
+.word-break {
+    height: 100%;
+    width: 3px;
+    cursor: col-resize;
+}
+
+.word-break.active {
+    background-color: #2d95f6;
 }
 
 .frequency-table-wrapper {

@@ -1,3 +1,4 @@
+import WordBreak from "./WordBreak";
 import {useEffect} from "react";
 
 function CipherLetter({
@@ -9,7 +10,8 @@ function CipherLetter({
                           displayText,
                           similar,
                           active,
-                          autocheck
+                          autocheck,
+                          resetWordBreaks
                       }) {
     const blank = "\u00A0";
 
@@ -27,15 +29,18 @@ function CipherLetter({
     }, [similar, handleText, location]);
 
     return (
-        <div
-            className={"letter-wrapper" + ((autocheck && displayText !== blank && displayText !== plaintext) ? " incorrect" : "")}
-            onClick={() => /^[A-Z]$/.test(plaintext) && handleFocus(location)}>
-            <p className="ciphertext-letter">{ciphertext}</p>
-            {/^[A-Z]$/.test(plaintext) &&
-                <p className={"plaintext-letter" + ((similar) ? " similar" : "") + ((active) ? " active" : "")}>{displayText}</p>}
-            {!/^[A-Z]$/.test(plaintext) && <p className="plaintext-letter non-alphabetic">{plaintext}</p>}
+        <div className="cipher-letter-wrapper">
+            <div
+                className={"letter-wrapper" + ((autocheck && displayText !== blank && displayText !== plaintext) ? " incorrect" : "")}
+                onClick={() => /^[A-Z]$/.test(plaintext) && handleFocus(location)}>
+                <p className="ciphertext-letter">{ciphertext}</p>
+                {/^[A-Z]$/.test(plaintext) &&
+                    <p className={"plaintext-letter" + ((similar) ? " similar" : "") + ((active) ? " active" : "")}>{displayText}</p>}
+                {!/^[A-Z]$/.test(plaintext) && <p className="plaintext-letter non-alphabetic">{plaintext}</p>}
+            </div>
+            <WordBreak reset={resetWordBreaks}/>
         </div>
-    )
+    );
 }
 
 export default CipherLetter;

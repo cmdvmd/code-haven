@@ -12,11 +12,13 @@ function App() {
     const [autocheck, setAutocheck] = useState(JSON.parse(localStorage.getItem("autocheck")) || false);
     const [selected, setSelected] = useState(null);
     const [inputtedText, setInputtedText] = useState(null);
+    const [resetWordBreaks, setResetWordBreaks] = useState(false);
 
     const resetInputtedText = () => {
         if (inputtedText !== null) {
             setInputtedText((originalValue) => originalValue.map((word) => Array(word.length).fill("\u00A0")));
             setSelected([0, 0]);
+            setResetWordBreaks((prevState) => !prevState);
         }
     }
 
@@ -43,7 +45,8 @@ function App() {
                     <button className="reset-button" onClick={resetInputtedText}>Reset</button>
                 </div>
                 <Problem cipher={cipher} alphabet={alphabet} autocheck={autocheck} inputtedText={inputtedText}
-                         handleInput={setInputtedText} selected={selected} handleSelection={setSelected}/>
+                         handleInput={setInputtedText} selected={selected} handleSelection={setSelected}
+                         resetWordBreaks={resetWordBreaks}/>
             </div>
             <Footer/>
         </div>
