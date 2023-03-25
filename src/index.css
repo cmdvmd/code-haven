@@ -85,7 +85,6 @@ code {
     align-content: center;
     height: 25px;
     padding: 15px 0;
-    margin-bottom: 15px;
 }
 
 .characteristic-wrapper {
@@ -149,6 +148,10 @@ code {
     align-content: center;
 }
 
+.letter-wrapper {
+    padding: 10px 0;
+}
+
 .letter-wrapper.incorrect {
     color: red;
 }
@@ -182,7 +185,6 @@ code {
 .cipher-wrapper {
     display: flex;
     flex-wrap: wrap;
-    row-gap: 20px;
     overflow: auto;
 }
 
@@ -204,13 +206,12 @@ code {
 .frequency-table-wrapper {
     display: flex;
     justify-content: center;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
 .frequency-table-letter-wrapper {
     border: 1px solid;
     width: fit-content;
-    margin-top: 30px;
 }
 
 .frequency-table-letter-wrapper.active {
