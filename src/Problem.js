@@ -2,7 +2,7 @@ import CipherLetter from "./CipherLetter";
 import {useState, useEffect, useRef, useCallback} from "react";
 import FrequencyTable from "./FrequencyTable";
 
-function Problem({cipher, alphabet, autocheck, inputtedText, handleInput, selected, handleSelection, resetWordBreaks}) {
+function Problem({cipher, alphabet, autocheck, inputtedText, handleInput, selected, handleSelection, reset}) {
     const [ciphertextWords, setCiphertext] = useState(null);
     const [plaintextWords, setPlaintext] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -112,7 +112,7 @@ function Problem({cipher, alphabet, autocheck, inputtedText, handleInput, select
                                           displayText={inputtedText[wordIndex][charIndex]}
                                           similar={char === ciphertextWords[selected[0]][selected[1]]}
                                           active={wordIndex === selected[0] && charIndex === selected[1]}
-                                          autocheck={autocheck} resetWordBreaks={resetWordBreaks}/>
+                                          autocheck={autocheck} reset={reset}/>
                         ))}
                     </div>
                 ))}

@@ -169,6 +169,10 @@ code {
     background-color: #ecececf0;
 }
 
+.ciphertext-letter.selected {
+    background-color: #64dcfa;
+}
+
 .plaintext-letter:not(.non-alphabetic) {
     font-family: monospace;
     border: 1px solid;

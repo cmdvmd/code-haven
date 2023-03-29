@@ -1,5 +1,5 @@
 import WordBreak from "./WordBreak";
-import {useEffect} from "react";
+import {useState, useEffect} from "react";
 
 function CipherLetter({
                           handleFocus,
@@ -11,9 +11,14 @@ function CipherLetter({
                           similar,
                           active,
                           autocheck,
-                          resetWordBreaks
+                          reset
                       }) {
+    const [selected, setSelected] = useState(false);
     const blank = "\u00A0";
+
+    const handleClick = () => {
+        setSelected((prevState) => !prevState);
+    }
 
     useEffect(() => {
         const handleKeypress = (event) => {
@@ -33,12 +38,13 @@ function CipherLetter({
             <div
                 className={"letter-wrapper" + ((autocheck && displayText !== blank && displayText !== plaintext) ? " incorrect" : "")}
                 onClick={() => /^[A-Z]$/.test(plaintext) && handleFocus(location)}>
-                <p className="ciphertext-letter">{ciphertext}</p>
+                <p className={"ciphertext-letter" + (selected ? " selected" : "")}
+                   onClick={handleClick}>{ciphertext}</p>
                 {/^[A-Z]$/.test(plaintext) &&
                     <p className={"plaintext-letter" + ((similar) ? " similar" : "") + ((active) ? " active" : "")}>{displayText}</p>}
                 {!/^[A-Z]$/.test(plaintext) && <p className="plaintext-letter non-alphabetic">{plaintext}</p>}
             </div>
-            <WordBreak reset={resetWordBreaks}/>
+            <WordBreak reset={reset}/>
         </div>
     );
 }
