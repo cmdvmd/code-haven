@@ -38,7 +38,7 @@ function App() {
             <div className="content">
                 <div className="test-options-wrapper">
                     <TestOption handleChange={setCipher} current={cipher} name="Cipher"
-                                options={["Aristocrat", "Patristocrat"]}/>
+                                options={["Aristocrat", "Patristocrat", "Xenocrypt"]}/>
                     <TestOption handleChange={setAlphabet} name="Alphabet" current={alphabet}
                                 options={["Random", "K1", "K2", "K3"]}/>
                     <Toggle handleChange={setAutocheck} name="Autocheck" current={autocheck}/>

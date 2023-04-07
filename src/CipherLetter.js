@@ -24,6 +24,8 @@ function CipherLetter({
         const handleKeypress = (event) => {
             if (similar && /^[A-Za-z]$/.test(event.key)) {
                 handleText(event.key.toUpperCase(), location)
+            } else if (similar && event.key === "~") {
+                handleText("\u00d1", location);
             } else if (similar && event.key === "Backspace") {
                 handleText(blank, location)
             }
@@ -37,12 +39,12 @@ function CipherLetter({
         <div className="cipher-letter-wrapper">
             <div
                 className={"letter-wrapper" + ((autocheck && displayText !== blank && displayText !== plaintext) ? " incorrect" : "")}
-                onClick={() => /^[A-Z]$/.test(plaintext) && handleFocus(location)}>
+                onClick={() => /^[A-Z\u00d1]$/.test(plaintext) && handleFocus(location)}>
                 <p className={"ciphertext-letter" + (selected ? " selected" : "")}
                    onClick={handleClick}>{ciphertext}</p>
-                {/^[A-Z]$/.test(plaintext) &&
+                {/^[A-Z\u00d1]$/.test(plaintext) &&
                     <p className={"plaintext-letter" + ((similar) ? " similar" : "") + ((active) ? " active" : "")}>{displayText}</p>}
-                {!/^[A-Z]$/.test(plaintext) && <p className="plaintext-letter non-alphabetic">{plaintext}</p>}
+                {!/^[A-Z\u00d1]$/.test(plaintext) && <p className="plaintext-letter non-alphabetic">{plaintext}</p>}
             </div>
             <WordBreak reset={reset}/>
         </div>

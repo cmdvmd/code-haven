@@ -36,7 +36,7 @@ function Problem({cipher, alphabet, autocheck, inputtedText, handleInput, select
                 } else {
                     letterIndex++;
                 }
-            } while (newAnswer[wordIndex][letterIndex] !== blank || !/[A-Z]/.test(ciphertextWords[wordIndex][letterIndex]));
+            } while (newAnswer[wordIndex][letterIndex] !== blank || !/[A-Z\u00d1]/u.test(ciphertextWords[wordIndex][letterIndex]));
         }
         handleInput(newAnswer);
         handleSelection([wordIndex, letterIndex]);
@@ -81,7 +81,7 @@ function Problem({cipher, alphabet, autocheck, inputtedText, handleInput, select
                             letterIndex--;
                         }
                     }
-                } while (!/[A-Z]/.test(ciphertextWords[wordIndex][letterIndex]));
+                } while (!/[A-Z\u00d1]/.test(ciphertextWords[wordIndex][letterIndex]));
                 handleSelection([wordIndex, letterIndex]);
             } else if (event.key === "Enter" && complete(true)) {
                 console.log(Date.now() - startTime.current);
@@ -118,7 +118,7 @@ function Problem({cipher, alphabet, autocheck, inputtedText, handleInput, select
                 ))}
             </div>
             {!loading && !error && <FrequencyTable ciphertext={ciphertextWords.join()} plaintext={plaintextWords.join()}
-                                                   inputtedText={inputtedText} alphabet={alphabet}
+                                                   inputtedText={inputtedText} cipher={cipher} alphabet={alphabet}
                                                    selected={ciphertextWords[selected[0]][selected[1]]}
                                                    autocheck={autocheck}/>}
         </div>

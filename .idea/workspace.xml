@@ -8,6 +8,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CipherLetter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/CipherLetter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FrequencyTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/FrequencyTable.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Problem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Problem.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
     </list>
@@ -88,6 +89,8 @@
       <workItem from="1679751804949" duration="297000" />
       <workItem from="1679752251901" duration="2033000" />
       <workItem from="1680046607531" duration="1315000" />
+      <workItem from="1680835961834" duration="165000" />
+      <workItem from="1680836657012" duration="2354000" />
     </task>
     <servers />
   </component>

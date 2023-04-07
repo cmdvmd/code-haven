@@ -1,7 +1,8 @@
 import TableLetter from "./TableLetter"
 
-function FrequencyTable({ciphertext, plaintext, inputtedText, alphabet, selected, autocheck}) {
+function FrequencyTable({ciphertext, plaintext, inputtedText, cipher, alphabet, selected, autocheck}) {
     const english_alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const spanish_alphabet = "ABCDEFGHIJKLMN\u00d1OPQRSTUVWXYZ";
     const k2 = alphabet === "K2";
 
     const calculateFrequency = (letter) => {
@@ -35,7 +36,7 @@ function FrequencyTable({ciphertext, plaintext, inputtedText, alphabet, selected
 
     return (
         <div className="frequency-table-wrapper">
-            {[...english_alphabet].map((char, index) => (
+            {[...(cipher === "Xenocrypt" ? spanish_alphabet : english_alphabet)].map((char, index) => (
                 <TableLetter key={index} alphabetLetter={char} ciphertextLetter={findPair(char)}
                              inputtedLetter={findInput(char)} frequency={calculateFrequency(char)} k2={k2}
                              selectedLetter={selected} active={char === selected} autocheck={autocheck}/>
