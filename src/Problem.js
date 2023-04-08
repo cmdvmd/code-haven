@@ -57,7 +57,7 @@ function Problem({cipher, alphabet, autocheck, plaintextWords, updatePlaintextWo
                 setLoading(false);
                 setError(true);
             })
-    }, [cipher, alphabet, handleInput, handleSelection]);
+    }, [cipher, alphabet, handleInput, handleSelection, updateCiphertextWords, updatePlaintextWords]);
 
     useEffect(() => {
         const handleKeypress = (event) => {
