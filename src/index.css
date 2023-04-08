@@ -87,6 +87,7 @@ code {
     row-gap: 5px;
     height: 25px;
     padding: 15px 0;
+    margin-top: 5px;
 }
 
 .characteristic-wrapper {
@@ -109,7 +110,7 @@ code {
     background-color: transparent;
     border: none;
     border-bottom: 2px solid #bbbbbb;
-    padding: 1px 4px;
+    padding: 0 5px;
 }
 
 .characteristic-option.active, .characteristic-option:hover {
@@ -128,7 +129,14 @@ code {
     height: 15px;
 }
 
-.reset-button {
+.option-buttons-wrapper {
+    display: inline-flex;
+    justify-content: space-evenly;
+    align-content: center;
+    column-gap: 10px;
+}
+
+.option-button {
     background-color: #0a7ce6;
     color: white;
     border: none;
@@ -152,6 +160,10 @@ code {
 .cipher-letter-wrapper {
     display: inline-flex;
     align-content: center;
+}
+
+.cipher-letter-wrapper:not(.patristocrat-letter) {
+    margin-right: 3px;
 }
 
 .letter-wrapper {
@@ -216,6 +228,7 @@ code {
 .frequency-table-wrapper {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     margin-top: 20px;
 }
 

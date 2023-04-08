@@ -3,6 +3,8 @@ import Header from './Header';
 import TestOption from "./TestOption";
 import Problem from "./Problem"
 import Toggle from "./Toggle";
+import ResetButton from "./ResetButton";
+import HintButton from "./HintButton";
 import Footer from "./Footer";
 import {useState, useEffect} from "react";
 
@@ -10,17 +12,11 @@ function App() {
     const [cipher, setCipher] = useState(localStorage.getItem("cipher") || "Aristocrat");
     const [alphabet, setAlphabet] = useState(localStorage.getItem("alphabet") || "Random");
     const [autocheck, setAutocheck] = useState(JSON.parse(localStorage.getItem("autocheck")) || false);
+    const [plaintextWords, setPlaintextWords] = useState(null);
+    const [ciphertextWords, setCiphertextWords] = useState(null);
     const [selected, setSelected] = useState(null);
     const [inputtedText, setInputtedText] = useState(null);
     const [reset, setReset] = useState(false);
-
-    const resetInputtedText = () => {
-        if (inputtedText !== null) {
-            setInputtedText((originalValue) => originalValue.map((word) => Array(word.length).fill("\u00A0")));
-            setSelected([0, 0]);
-            setReset((prevState) => !prevState);
-        }
-    }
 
     useEffect(() => {
         localStorage.setItem("cipher", cipher)
@@ -42,11 +38,17 @@ function App() {
                     <TestOption handleChange={setAlphabet} name="Alphabet" current={alphabet}
                                 options={["Random", "K1", "K2", "K3"]}/>
                     <Toggle handleChange={setAutocheck} name="Autocheck" current={autocheck}/>
-                    <button className="reset-button" onClick={resetInputtedText}>Reset</button>
+                    <div className="option-buttons-wrapper">
+                        <HintButton cipher={cipher} plaintextWords={plaintextWords} inputtedText={inputtedText}
+                                    updateInputtedText={setInputtedText}/>
+                        <ResetButton inputtedText={inputtedText} updateInputtedText={setInputtedText}
+                                     updateSelected={setSelected} toggleReset={setReset}/>
+                    </div>
                 </div>
-                <Problem cipher={cipher} alphabet={alphabet} autocheck={autocheck} inputtedText={inputtedText}
-                         handleInput={setInputtedText} selected={selected} handleSelection={setSelected}
-                         reset={reset}/>
+                <Problem cipher={cipher} alphabet={alphabet} autocheck={autocheck} plaintextWords={plaintextWords}
+                         updatePlaintextWords={setPlaintextWords} ciphertextWords={ciphertextWords}
+                         updateCiphertextWords={setCiphertextWords} inputtedText={inputtedText}
+                         handleInput={setInputtedText} selected={selected} handleSelection={setSelected} reset={reset}/>
             </div>
             <Footer/>
         </div>

@@ -2,9 +2,7 @@ import CipherLetter from "./CipherLetter";
 import {useState, useEffect, useRef, useCallback} from "react";
 import FrequencyTable from "./FrequencyTable";
 
-function Problem({cipher, alphabet, autocheck, inputtedText, handleInput, selected, handleSelection, reset}) {
-    const [ciphertextWords, setCiphertext] = useState(null);
-    const [plaintextWords, setPlaintext] = useState(null);
+function Problem({cipher, alphabet, autocheck, plaintextWords, updatePlaintextWords, ciphertextWords, updateCiphertextWords, inputtedText, handleInput, selected, handleSelection, reset}) {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
     const startTime = useRef(null);
@@ -49,8 +47,8 @@ function Problem({cipher, alphabet, autocheck, inputtedText, handleInput, select
             .then((response) => response.json())
             .then((problem) => {
                 let words = problem.ciphertext.split(" ");
-                setCiphertext(words);
-                setPlaintext(problem.plaintext.split(" "));
+                updateCiphertextWords(words);
+                updatePlaintextWords(problem.plaintext.split(" "));
                 handleInput(words.map((word) => Array(word.length).fill(blank)));
                 handleSelection([0, 0]);
                 setLoading(false);
@@ -106,8 +104,7 @@ function Problem({cipher, alphabet, autocheck, inputtedText, handleInput, select
                     <div key={wordIndex} className="word-wrapper">
                         {[...word].map((char, charIndex) => (
                             <CipherLetter key={[wordIndex, charIndex]} handleFocus={handleSelection}
-                                          handleText={handleLetter}
-                                          location={[wordIndex, charIndex]}
+                                          handleText={handleLetter} location={[wordIndex, charIndex]} cipher={cipher}
                                           ciphertext={char} plaintext={plaintextWords[wordIndex][charIndex]}
                                           displayText={inputtedText[wordIndex][charIndex]}
                                           similar={char === ciphertextWords[selected[0]][selected[1]]}

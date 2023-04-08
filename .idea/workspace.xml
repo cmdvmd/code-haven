@@ -8,7 +8,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CipherLetter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/CipherLetter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FrequencyTable.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/FrequencyTable.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Problem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Problem.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
     </list>
@@ -28,6 +27,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2NDS7JodceKl3ppuHHdmZJ6G4m3" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -90,7 +92,9 @@
       <workItem from="1679752251901" duration="2033000" />
       <workItem from="1680046607531" duration="1315000" />
       <workItem from="1680835961834" duration="165000" />
-      <workItem from="1680836657012" duration="2354000" />
+      <workItem from="1680836657012" duration="2631000" />
+      <workItem from="1680875353147" duration="4361000" />
+      <workItem from="1680889473518" duration="708000" />
     </task>
     <servers />
   </component>
