@@ -1,70 +1,73 @@
-# Getting Started with Create React App
+<img src="public/logo192.png" alt="logo" align="right"/>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Code Haven
 
-## Available Scripts
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/018866ef-7a96-4228-be7e-459f6e4a90a8/deploy-status)](https://app.netlify.com/sites/codehaven/deploys)
 
-In the project directory, you can run:
+Welcome to Code Haven, a tool to practice K1, K2, K3, and random substitution Aristocrats, Patristocrats, and Xenocrypts
+for the Codebusters Science Olympiad event. The aim of this tool is to mimic a problem on a real Codebusters test as
+closely as possible (while still being convenient to use).
 
-### `npm start`
+> **Note:** Xenocrypts are English quotes translated into Spanish and may not always be accurate
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+> **Note:** Not compatible with mobile; requires a physical keyboard
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Entering Text
 
-### `npm test`
+To start solving a problem, select a letter by clicking the box under the ciphertext letter. Use the keyboard to type a
+letter, which will be entered for all instances of the selected letter. The selected element will then advance to the
+next empty letter.
+> ***Note:** to type Ñ for Xenocrypts, press the `~` (tilde) key*
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+| Color                                               | Meaning                                                                         |
+|-----------------------------------------------------|---------------------------------------------------------------------------------|
+| ![Selected Letter](tutorial_images/selected.png)    | Currently selected element                                                      |
+| ![Same Letter](tutorial_images/same_letter.png)     | Same letter as the selected letter,<br/> but not the currently selected element |
+| ![Unelected Letter](tutorial_images/unselected.png) | Unselected letter                                                               |
 
-### `npm run build`
+## Completing a Problem
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Once a problem has been completed, press the `[Enter]` or `[Return]` key. If the entered solution is correct, an alert
+will appear with the solution and the time taken to solve the problem.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![Alert](tutorial_images/alert.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Tools
 
-### `npm run eject`
+There are five tools available in CodeHaven to make solving ciphers easier
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Pattern Marking
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Clicking the ciphertext letters (in gray) on any cipher will mark this letter in blue to more easily recognize repeating
+patterns, especially helpful for Patristocrats
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+![Pattern Marking](tutorial_images/pattern_marking.png)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Word Breaks
 
-## Learn More
+Only for Patristocrats, clicking in between two letters will create a separation between these letters, signifying a
+break between words for increased readability
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![Word Breaks](tutorial_images/word_breaks.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Autocheck
 
-### Code Splitting
+When autocheck is enabled by clicking the checkbox at the top, incorrect letters will be highlighted in red in both the
+cipher and the frequency table at the bottom
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+![Autocheck Letter](tutorial_images/autocheck.png)
+![Autocheck Table](tutorial_images/autocheck_table.png)
 
-### Analyzing the Bundle Size
+### Hint
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+When the hint button is pressed, one correct letter will be inputted into the cipher, starting with vowels and followed
+by consonants in order of frequency in the English or Spanish language
 
-### Making a Progressive Web App
+![Hint](tutorial_images/hint.gif)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Reset
 
-### Advanced Configuration
+When the reset button is pressed, the entire text of the cipher is removed, but marked patterns will remain
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![Reset](tutorial_images/reset.gif)

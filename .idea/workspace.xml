@@ -6,10 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b26b67e2-5876-4d4b-9e28-997e0eac7e80" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CipherLetter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/CipherLetter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Problem.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Problem.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HintButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/HintButton.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +20,9 @@
         <option value="JavaScript File" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -39,6 +40,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Vishal/IdeaProjects/Code Haven&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
@@ -50,6 +52,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -95,6 +98,15 @@
       <workItem from="1680836657012" duration="2631000" />
       <workItem from="1680875353147" duration="4361000" />
       <workItem from="1680889473518" duration="708000" />
+      <workItem from="1680915615336" duration="3699000" />
+      <workItem from="1680959427698" duration="664000" />
+      <workItem from="1681394428241" duration="626000" />
+      <workItem from="1681578117166" duration="205000" />
+      <workItem from="1683418817013" duration="3071000" />
+      <workItem from="1683834911840" duration="1356000" />
+      <workItem from="1683841184671" duration="1256000" />
+      <workItem from="1684074082157" duration="667000" />
+      <workItem from="1684674479074" duration="4410000" />
     </task>
     <servers />
   </component>
