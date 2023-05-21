@@ -9,7 +9,8 @@ Welcome to Code Haven, a tool to practice K1, K2, K3, and random substitution Ar
 for the Codebusters Science Olympiad event. The aim of this tool is to mimic a problem on a real Codebusters test as
 closely as possible (while still being convenient to use).
 
-> **Note:** Xenocrypts are English quotes translated into Spanish and may not always be accurate
+> **Note:** Xenocrypts are English quotes translated into Spanish and may not always be accurate. Keyword alphabets will
+> always encode with an English keyword
 
 > **Note:** Not compatible with mobile; requires a physical keyboard
 
